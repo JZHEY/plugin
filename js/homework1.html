@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p></p>
+        <li></li>
+        <span>
+            <a href=""></a>
+            <p>
+                <ul>
+                    <li>
+                        <h1>
+
+                        </h1>
+                    </li>
+                </ul>
+            </p>
+        </span>
+    </div>
+    <div class="box"></div>
+    <script>
+        //在原型链上编程，遍历任意一个父元素，找到他的子元素节点
+        let div = document.getElementsByTagName('div')[0]
+        Element.prototype.getNodes = function(number) {
+            // console.log(node.childNodes)
+            let nodes = this.childNodes,
+                newNodes = []
+            for(let i = 0; i < nodes.length; i++){
+                if(nodes[i].nodeType === number){
+                    newNodes.push(nodes[i])
+                }
+            }
+            // console.log(newNodes)
+            return newNodes
+        }
+        //在原型链上编程，找出一个元素得第n层父级元素
+        let h = document.getElementsByTagName('h1')[0]
+        Element.prototype.findParent = function (number) {
+            let node = this
+            for(let i = 0; i < number; i++){
+                node = node.parentNode
+            }
+            return node
+        }
+
+        //在原型链上编程，hasChildren 判断父元素有没有子元素节点
+        let box = document.getElementsByClassName('box')
+        Element.prototype.hasChildren = function () {
+            let cNodes = this.childNodes
+            let flag = false
+            for(let i = 0; i< cNodes.length; i++){
+                if(cNodes[i].nodeType === 1){
+                    flag = true
+                }
+            }
+
+            return flag
+        }
+        // console.log(h.childNodes)
+
+        //在原型链上编程，寻找兄弟元素得节点。参数n为正，找之后得第n个，参数n为负，找之前得第n个，参数为零找到自己
+        // console.log(div.siblingNodes)
+        Element.prototype.findSibling = function (number) {
+            let node = this
+            if(number === 0){
+                return node
+            }
+            for(let i = 0; i < number; i++){
+                if(number > 0){
+                    node = node.nextElementSibling
+                }else if(number < 0 ){
+                    node = node.previousElementSibling
+                }
+                
+            }
+            return node
+        }
+
+        //在原型链上编程，遍历一个父级元素下面所有得子节点
+        let allNodes = []
+        let op = document.getElementsByTagName('a')[0]
+        Element.prototype.findAllNodes = function () {
+            let nodes = this.getNodes(1)
+            for(let i = 0; i < nodes.length; i++){
+                allNodes.push(nodes[i])
+                nodes[i].findAllNodes()
+            }
+
+            return allNodes
+        }
+
+        //在原型上封装一个insertAfter()方法
+        let strong = document.createElement('strong')
+        Element.prototype.insertAfter = function () {
+            console.log(this.nextElementSibling)
+            let _this = this,
+                parent = _this.parentElement
+            if(this.nextElementSibling){
+                parent.insertBefore(strong, _this.nextElementSibling)
+            } else {
+                parent.appendChild(strong)
+            }
+        }
+        // let ofrag = document.createDocumentFragment()
+        
+        // for(let i = 0; i < 10; i++){
+        //     let oli = document.createElement('li')
+        //     ofrag.appendChild(oli)
+        // }
+        // div.appendChild(ofrag)
+
+
+        // var A = function() {};
+        // A.prototype.n = 1;
+        // var b = new A();
+        // A.prototype = {
+        // n: 2,
+        // m: 3
+        // }
+        // var c = new A();
+
+        // console.log(b.n);
+        // console.log(b.m);
+
+        // console.log(c.n);
+        // console.log(c.m);
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+a{
+    display: block;
+    height: 100%;
+    text-decoration: none;
+    color: black;
+    line-height: 50px;
+}
+.tab-item{
+    width: 100px;
+    text-align: center;
+}
+.tab{
+    display: flex;
+    width: 100%;
+}
+.tabs-wrapper{
+    margin: 50px;
+}
+.pages{
+    border: 1px solid black;
+    position: relative;
+    width: 100%;
+    height: 500px;
+}
+.page-item{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    font-size: 50px;
+    display: none;
+}
+.cur a{
+    background-color: black;
+    
+}
+.cur a{
+    color: white;
+}
+.active{
+    display: block;
+}

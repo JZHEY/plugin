@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Promise</title>
+</head>
+<body>
+    <script type="text/javascript">
+        let promise = new Promise((resolve,reject) => {
+            setTimeout(() => {
+                console.log("this is the first setTimeOut")
+                resolve("success")
+            }, 2000);
+        })
+
+        promise
+        .then((value) => {
+            console.log(value)
+            setTimeout(() => {
+                console.log("this is the second setTimeout")
+            }, 1000);
+            console.log("second success")
+        },(err) => {
+            console.log(err)
+            console.log("first error" + err)
+        })
+        .then((value) => {
+            console.log(value)
+        },(err) => {
+            console.log(err)
+        })
+
+        console.log(promise)
+
+    </script>
+    
+</body>
+</html>

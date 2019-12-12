@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        function iteratorUtil(){
+            console.log(this)
+            let that = this 
+            let index = 0
+            if(that instanceof Array){
+                return {
+                    next(){
+                        return index < that.length ? {value:that[index++],done:false}:{value:that[index++],done:true}
+                    }
+                }
+            }else{
+                let keys = Object.keys(obj)
+                let length = keys.length
+                return {
+                    next(){
+                        return index < length ? {value:that[keys[index++]],done:false}:{value:that[keys[index++]],done:true}
+                    }
+                }
+            }
+            
+        }
+
+        let arr = [1,2,2,3,4,5]
+        let obj = {
+            name:'kete',
+            age:13,
+            sex:'男'
+        }
+        console.log(Object.keys(obj))
+        // let iteratorObj = iteratorUtil(arr)
+        Array.prototype[Symbol.iterator] = iteratorUtil
+        Object.prototype[Symbol.iterator] = iteratorUtil
+
+        for(let i of arr){
+            console.log(i)
+        }
+
+        for(let i of obj){
+            console.log(i)
+        }
+
+    </script>
+</body>
+</html>

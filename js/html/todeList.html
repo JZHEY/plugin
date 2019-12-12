@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="warpper">
+        <div>
+            <input type="text">
+            <button>添加提醒事项</button>
+        </div>
+        <div class="list-item">
+
+        </div>
+    </div>
+    <script type="text/javascript">
+
+        function addEvent(element,type,hander){
+            if(element.addEventListener){
+                element.addEventListener(type,hander,false)
+            }else if(element.attachEvent){
+                element.addEvent('on' + type, function(){
+                    hander.call(element)
+                })
+            }else {
+                element['on' + type] = hander
+            }
+        }
+        let oinput = document.getElementsByTagName('input')[0],
+            obtn = document.getElementsByTagName('button')[0],
+            listItem = document.getElementsByClassName('list-item')[0]
+
+            addEvent(obtn,'click',function(){
+                var oli = document.createElement('li')
+                    oli.innerHTML = '<span class="edit">' + oinput.value + '</span>' + '<span class="edit">  编辑</span>' + '<span class="edit">  删除</span>'
+                listItem.appendChild(oli)
+            })
+            
+    </script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style type="text/css">
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: #cccccc;
+        }
+        .box-wrapper{
+            width: 50%;
+            height: 500px;
+            position: absolute;
+            /* box-shadow: 5px 5px 5px #cccccc; */
+            margin: 0 auto;
+            background-color: white;
+            padding: 25px 0;
+            top: 50%;
+            left: 50%;
+            margin-top: -250px;
+            margin-left: -25%;
+        }
+        .wrapper{
+            border: 1px solid #cccccc;
+            width: 95%;
+            margin: 0 auto;
+            border-radius: 5px;
+        }
+        .order-wrapper{
+            background-color: #F1F1F1;
+            padding: 1% 0;
+        }
+        .list,.pay-list{
+            width: 75%;
+            margin: 0 auto;
+            /* border:1px solid red; */
+            display: flex;
+            justify-content: flex-start;
+            line-height: 50px;
+        }
+        .label{
+            width: 38%;
+            text-align: right;
+            font-weight: bold;
+        }
+        .type{
+            flex: 1;
+            text-align: left;
+            font-weight: bold;
+        }
+        .detail{
+            width: 35%;
+            text-align: left;
+            padding-left: 5px;
+            color: rgb(145, 144, 144);
+        }
+        .pay-list{
+            margin-top: 30px;
+        }
+        .pay-type,.card-name{
+            border: 1px solid #cccccc;
+            width: 200px;
+            border-radius: 3px;
+            margin-left: 5px;
+        }
+        .red{
+            color: red;
+        }
+        .pay-des,.btn-next{
+            margin: 0 auto;
+        }
+        .btn-next{
+            width: 25%;
+            line-height: 35px;
+            border-radius: 3px;
+            border: none;
+            background-color: rgb(0, 122, 255);
+            color: white;
+            margin-bottom: 30px;
+            margin-top: -10px;
+        }
+        .pay-type{
+            background-image: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1575373329333&di=dd95f9faf8488abd33887f0930ac5c3f&imgtype=0&src=http%3A%2F%2Fimg.vlongbiz.com%2Fnews%2Fh022%2Fh11%2Fimg201512220814150501.jpg");
+            background-size: 200px 50px;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <div class="box-wrapper">
+        <div class="wrapper">
+                <div class="order-wrapper">
+                    <div class="list">
+                        <span class="label">订单号：</span>
+                        <span class="detail">191203144705TW002328000010102865</span>
+                    </div>
+                    <div class="list">
+                        <span class="label">购买数量：</span>
+                        <span class="detail">99.278873</span>
+                        <span class="type">USDT</span>
+                    </div>
+                    <div class="list">
+                        <span class="label">订单金额：</span>
+                        <span class="detail">704.88</span>
+                        <span class="type">CNY</span>
+                    </div>
+                </div>
+                <div class="pay-wrapper">
+                    <div class="pay-list">
+                        <span class="label">您的支付方式：</span>
+                        <div class="pay-type">
+                        </div>
+                    </div>
+                    <div class="pay-list">
+                        <span class="label">输入您（<span class="red">持卡人</span>）<span class="red">姓名</span>：</span>
+                        <input class="card-name" placeholder="请输入持卡人姓名" type="text" name="" id="">
+                    </div>
+                    <div class="pay-list">
+                        <p class="pay-des red">请正确填写持卡人姓名，只需要填写姓名！填写其他无法到账。</p>
+                    </div>
+                    <div class="pay-list">
+                        <button class="btn-next">下一步</button>
+                    </div>
+                </div>
+            </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script type="text/javaScript">
+    var getBytes = function (params) {
+        var num = 0
+        for (let index = 0; index < params.length; index++) {
+            if(params.charCodeAt(index) > 0 && params.charCodeAt(index) < 255){
+                num++
+            }else{
+                num += 2
+            }
+            
+        }
+        console.log(num)
+    }
+    // var a = 'abcd'
+    // console.log(a.length)
+    getBytes('agjsadhgfadh')
+
+
+</script>
+<body>
+    
+</body>
+</html>
